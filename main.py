@@ -22,7 +22,6 @@ class Upinator:
 
     def load_urls(self, file="urls.txt"):
         self.saved_urls = []  # clear list
-        
         try:
             with open(file, "r") as f:
                 lines = f.readlines()
@@ -34,11 +33,11 @@ class Upinator:
     def update_urls(self):
         try:
             response = requests.get(self.domain, auth=(self.cred[0], self.cred[1]))
+            data = response.json()
         except:
             print("Could not update URLS")
             self.notify("Failed to update URLS", "Server down??")
             return 1
-        data = response.json()
 
         frontends = {**data["docker"]["frontends"], **data["file"]["frontends"]}
 
