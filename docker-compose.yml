@@ -10,12 +10,14 @@ services:
             - "/var/run/docker.sock:/tmp/docker.sock:ro"
     upinator:
         container_name: upinator
-        image: upinator
+        build: .
         volumes:
                 #- "~/code/Upinator/app:/app"
             - "$PWD/app:/app"
-        network_mode: host
+              #        network_mode: host
         environment:
                 - VIRTUAL_HOST=3cpo.nikzy.no
+                - VIRTUAL_PORT=8000
         expose:
                 - "8000"
+
