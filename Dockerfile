@@ -5,5 +5,6 @@ run apt-get install -y python3-pip python-dev
 copy ./app /app
 WORKDIR /app
 RUN pip3 install -r requirements.txt
-ENTRYPOINT python3 app.py
-CMD ["python3 app.py"]
+ENTRYPOINT gunicorn -w 4 app:app
+#ENTRYPOINT python3 app.py
+#CMD ["python3 app.py"]

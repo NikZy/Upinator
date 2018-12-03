@@ -18,4 +18,4 @@ services:
         environment:
                 - VIRTUAL_HOST=3cpo.nikzy.no
         expose:
-                - "5000"
+                - "8000"

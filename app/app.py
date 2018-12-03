@@ -6,7 +6,6 @@ app = Flask(__name__)
 class Ip:
     def __init__(self):
         self.ip = ""
-        self.pb = Pushbullet("nHqbzHZU")
 
 @app.route('/')
 def hello_world():
