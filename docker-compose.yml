@@ -1,0 +1,21 @@
+version: "2"
+
+services:
+    nginx-proxy:
+        container_name: nginx-proxy
+        image: jwilder/nginx-proxy
+        ports:
+            - "80:80"
+        volumes:
+            - "/var/run/docker.sock:/tmp/docker.sock:ro"
+    upinator:
+        container_name: upinator
+        image: upinator
+        volumes:
+                #- "~/code/Upinator/app:/app"
+            - "$PWD/app:/app"
+        network_mode: host
+        environment:
+                - VIRTUAL_HOST=3cpo.nikzy.no
+        expose:
+                - "5000"
